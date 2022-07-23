@@ -110,4 +110,4 @@ form input:focus {
 .fall {
     transform: translateY(8rem) rotateZ(20deg);
     opacity: 0;
-}
+} 
