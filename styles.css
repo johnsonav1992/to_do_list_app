@@ -114,7 +114,10 @@ form input:focus {
 @media (max-width: 500px) {
     form input {
         width: 200px;
+        
     }
     
-    
+    .todo {
+        font-size: 1rem;
+    }
 }
