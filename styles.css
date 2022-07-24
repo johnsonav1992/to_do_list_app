@@ -114,7 +114,7 @@ form input:focus {
 
 @media (max-width: 500px) {
     form input {
-        width: 100px;
+        width: 200px;
     }
     
     
