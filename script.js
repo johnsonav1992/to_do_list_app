@@ -10,6 +10,8 @@ todoList.addEventListener('click', deleteCheck);
 //functions
 function addTodo(event) {
 
+    console.log(todoInput.value)
+
 //prevent form from submitting
     event.preventDefault();
    
@@ -22,6 +24,7 @@ function addTodo(event) {
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
+    saveTodo(todoInput.value)
 
     //checkmark button
     const completedButton = document.createElement('button');
@@ -34,6 +37,7 @@ function addTodo(event) {
     trashButton.innerText = '✕';
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
+
 
     //append to list
     todoList.appendChild(todoDiv);
@@ -48,9 +52,11 @@ function deleteCheck(event) {
 
     if (item.classList[0] === 'trash-btn') {
         const todo = item.parentElement;
+        const deleteValue = item.parentElement.firstChild.innerText
         todo.classList.add('fall');
         todo.addEventListener('transitionend', function () {
             todo.remove();
+            removeTodoFromStorage(deleteValue)
         });
     }
     
@@ -60,6 +66,25 @@ function deleteCheck(event) {
         todo.classList.toggle('completed');
     }
 }
+
+//local storage functions
+function saveTodo(todo) {
+    localStorage.setItem(randomId(), todo)
+}
+
+function getTodos(id) {
+    localStorage.getItem(id)
+}
+
+function removeTodoFromStorage(todo) {
+    localStorage.removeItem(localStorage.key(todo))
+}
+
+function randomId() {
+    return Math.floor(Math.random() * 1000 + 1)
+}
+
+
 
 
 
