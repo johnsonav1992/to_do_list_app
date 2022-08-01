@@ -15,7 +15,8 @@ getTodos()
 
 //add todo
 function addTodo(event) {
-
+    if(todoInput.value === '') return
+    
     console.log(todoInput.value)
 
     //prevent form from submitting
